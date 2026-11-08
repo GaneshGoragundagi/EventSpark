@@ -1,68 +1,137 @@
+# EventSpark — Modern Event Management & Ticketing Platform
 
-# EventSpark — Event Experience Platform
-
-High-performance, modern event management platform built with HTML5, modern CSS3, vanilla JavaScript (ES6+), Chart.js, and Supabase (PostgreSQL with Row Level Security & connection pooling).
-
+EventSpark is a modern, high-performance web application designed for organizing, managing, and publishing events with real-time attendee tracking and analytics. Built with lightweight vanilla web standards and powered by PostgreSQL with Row-Level Security.
 
 ---
 
+## ✨ Features
 
-## 🚀 Quick Run (Local)
+- **🎯 Event Lifecycle Management**: Create, customize, publish, and manage in-person, virtual, or hybrid events with ease.
+- **🎟️ Real-Time Attendee Registration**: Fast ticket reservations with atomic capacity checks to prevent overbooking races.
+- **📊 Interactive Analytics Dashboard**: Live visual breakdown of registrations, attendee statuses, and engagement metrics powered by Chart.js.
+- **👥 Attendee Management**: Filter, search, track attendance (`registered`, `attended`, `cancelled`), and export attendee lists.
+- **🔐 Flexible Authentication**: Seamless Supabase cloud authentication with automatic fallback to local offline mode.
+- **🚀 Zero Build Step**: 100% standard HTML5, modern CSS3, and ES6+ JavaScript. No node_modules, bundlers, or complex build toolchains required.
 
-1. Open the folder in VS Code.
-2. Right click `index.html` → **Open with Live Server** (or run `python -m http.server 8000`).
-3. Open `http://localhost:8000` in your browser.
+---
 
+## 🛠️ Tech Stack
 
-## ☁️ Supabase Production Setup (Ready for 1,000+ Concurrent Users)
+- **Frontend**: HTML5, Modern CSS3 (Custom Design System, Glassmorphism, CSS Grid & Flexbox), Vanilla JavaScript (ES6+)
+- **Charts & Data Visualization**: Chart.js
+- **Database & Auth**: Supabase (PostgreSQL, Row-Level Security (RLS), PL/pgSQL Stored Procedures)
+- **Deployment**: Static Web Hosting (Vercel, Netlify, GitHub Pages, or Cloudflare Pages)
 
+---
 
-### 1. Database Schema & RPC
+## 📁 Project Structure
 
-1. In your **Supabase Dashboard**, open the **SQL Editor**.
-2. Paste and run [`supabase/schema.sql`](supabase/schema.sql).
-   - This sets up `profiles`, `events`, and `registrations` with Row Level Security (RLS).
-   - Adds atomic locking on capacity to prevent overbooking races.
-   - Creates indexes on `organizer_id`, `status`, `start_date`, and `email` for high-throughput concurrency.
+```text
+EventSpark/
+├── assets/                  # Brand logos, icons, and image assets
+├── css/
+│   └── style.css            # Unified responsive CSS design system
+├── js/
+│   ├── config.js            # Client environment configuration
+│   ├── core.js              # Core engine, Supabase data access, state sync
+│   ├── auth.js              # Infallible login, signup, and session handlers
+│   ├── dashboard.js         # Organizer overview & live event metrics
+│   ├── events.js            # Event list & management
+│   ├── create-event.js      # Multi-step event creation wizard
+│   ├── attendees.js         # Attendee CRM & status management
+│   ├── analytics.js         # Data visualization & reporting
+│   ├── public-event.js      # Public event landing & registration page
+│   └── settings.js          # Organizer profile & preference management
+├── supabase/
+│   └── schema.sql           # Complete PostgreSQL schema, RLS policies & RPCs
+├── index.html               # Public platform landing page
+├── login.html               # Organizer login portal
+├── signup.html              # Organizer registration portal
+├── dashboard.html           # Main organizer workspace
+├── events.html              # Event catalog management
+├── create-event.html        # New event editor
+├── attendees.html           # Attendee roster & check-in
+├── analytics.html           # Metrics & performance charts
+├── settings.html            # Organizer profile settings
+└── public-event.html        # Public-facing RSVP / ticket page
+```
 
-### 2. Instant User Login & Auto-Confirmation
+---
 
-To allow users to sign up and immediately log in without waiting for email verification links:
+## 🚀 Quick Start (Local Development)
 
-1. Go to **Authentication** → **Providers** → **Email** in your Supabase Dashboard.
-2. Toggle **OFF** **"Confirm email"**.
-3. Click **Save**.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/EventSpark.git
+cd EventSpark
+```
 
-### 3. Client Configuration
+### 2. Run the Application
+Because EventSpark is a native web application, you do not need to install dependencies:
+- **Using VS Code**: Right-click `index.html` → **Open with Live Server**.
+- **Using Python**:
+  ```bash
+  python -m http.server 8000
+  ```
+- **Using Node.js**:
+  ```bash
+  npx serve .
+  ```
 
-Check [`js/config.js`](js/config.js):
+Open `http://localhost:8000` in your browser.
+
+---
+
+## ☁️ Backend & Database Configuration (Optional)
+
+EventSpark runs immediately out of the box with built-in demo data. To connect your own PostgreSQL cloud database:
+
+### 1. Set Up Database Schema
+1. Create a project on [Supabase](https://supabase.com).
+2. Open the **SQL Editor** in your project dashboard.
+3. Copy the contents of `supabase/schema.sql` and run it. This creates:
+   - `profiles` table with automatic user creation triggers
+   - `events` table with Row-Level Security
+   - `registrations` table with unique ticket code generation
+   - `register_for_event` atomic transaction RPC with capacity locks
+   - High-throughput database indexes
+
+### 2. Configure Client Keys
+In `js/config.js`, update your project credentials:
 
 ```javascript
 window.ES_CONFIG = {
-  SUPABASE_URL: "https://your-project.supabase.co",
+  SUPABASE_URL: "https://your-project-id.supabase.co",
   SUPABASE_ANON_KEY: "your-anon-publishable-key",
-  DEMO_MODE: false,
+  DEMO_MODE: false
 };
 ```
 
-_(Your active Supabase credentials are already pre-configured)._
+> **Note**: For zero-configuration offline demonstration, set `DEMO_MODE: true`.
 
 ---
 
-## 🌐 Deploy to Production (Vercel / Netlify / Cloudflare Pages)
+## 🌐 Production Deployment
 
-1. Push this folder to a GitHub repository.
-2. Import the repository into **Vercel** or **Netlify** as a **Static Site** (no build command needed, publish directory is root `.`).
-3. In your **Supabase Dashboard** → **Authentication** → **URL Configuration**:
-   - Set **Site URL** to your production domain (e.g., `https://your-event-spark.vercel.app`).
-   - Add `https://your-event-spark.vercel.app/**` to **Redirect URLs**.
+Deploy EventSpark to any static hosting provider in seconds:
+
+### Deploying to Vercel / Netlify
+1. Connect your GitHub repository to **Vercel** or **Netlify**.
+2. Set the build command to empty (no build step).
+3. Set the output directory to root (`.`).
+4. Click **Deploy**.
 
 ---
 
-## 🔒 1,000 Concurrent Users Architecture Checklist
+## 🔒 Security & Concurrency Design
 
-- **Atomic Concurrency**: `register_for_event` uses PostgreSQL `FOR UPDATE` row-level locks on event capacity checks to prevent double-booking or overcapacity races under high concurrent traffic.
-- **Double-Click Protection**: All registration and form submission buttons disable instantly upon click to prevent duplicate payloads.
-- **Data Isolation**: Multi-tenant Row Level Security (RLS) guarantees that organizers only see and edit their own private drafts and registrations.
-- **Clean Indexing**: `events_owner_idx`, `events_status_idx`, `events_start_date_idx`, and `regs_email_idx` optimize lookups across thousands of simultaneous sessions.
-- **Dynamic Profile Syncing**: When any user logs in, their actual full name and email are synced to their profile and reflected across all workspace sidebars and headers.
+- **Atomic Booking Protection**: Prevents double-booking race conditions during high-volume registration rushes via row-level PostgreSQL locks.
+- **Row-Level Security (RLS)**: Enforces tenant isolation so organizers can only read and modify their own events and attendees.
+- **Input Sanitization**: Prevents script injection on public RSVP submissions.
+- **Double-Click Throttling**: Submit buttons disable immediately upon submission to prevent accidental duplicate requests.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
