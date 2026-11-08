@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Log In — EventSpark</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth">
+    <a class="brand authbrand" href="index.html">
+      <img src="assets/logo.png" alt="EventSpark" class="brand-logo-img" />
+      <span>Event<span class="brand-spark">Spark</span><span class="brand-dot"></span></span>
+    </a>
+
+    <main class="authcard">
+      <span class="eyebrow">ORGANIZER PORTAL</span>
+      <h1>Welcome back.</h1>
+      <p>Log in to manage your events, attendees, and live analytics.</p>
+
+      <div class="tabs">
+        <a class="active" href="login.html">Log in</a>
+        <a href="signup.html">Sign up</a>
+      </div>
+
+      <!-- Quick 1-Click Demo Login Box -->
+      <div class="demo-login-box">
+        <div>
+          <span>🚀 Instant Demo Access</span>
+          <div style="font-size: 11px; color: var(--muted);">Explore with pre-loaded events</div>
+        </div>
+        <button type="button" id="btn-demo-fill" class="btn btn-gradient sm">
+          1-Click Login
+        </button>
+      </div>
+
+      <form id="login" action="javascript:void(0);">
+        <label>
+          Email address
+          <input name="email" id="login-email" type="email" placeholder="you@company.com" required />
+        </label>
+
+        <label>
+          Your Name <small style="color: var(--muted); font-weight: normal;">(Optional to update profile)</small>
+          <input name="name" id="login-name" placeholder="Leave empty to use saved profile name" />
+        </label>
+
+        <label>
+          Password
+          <input name="password" id="login-password" type="password" placeholder="••••••••" required />
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="show" />
+          <span>Show password</span>
+        </label>
+
+        <button type="submit" class="btn btn-primary full big" id="login-submit-btn" style="margin-top: 10px;">
+          Log In ↗
+        </button>
+
+        <p id="message" class="message" style="display: none;"></p>
+      </form>
+
+      <div style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--muted);">
+        Don't have an account yet? <a href="signup.html" style="color: var(--primary); font-weight: 700;">Create free space</a>
+      </div>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/auth.js?v=3"></script>
+  </body>
+</html>

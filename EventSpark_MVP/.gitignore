@@ -1,0 +1,5 @@
+.DS_Store
+.env
+.vercel/
+.vscode/
+*_Updated.zip

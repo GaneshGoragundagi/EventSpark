@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Analytics & Reports — EventSpark Workspace</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="EventSpark" class="brand-logo-img" />
+        <span>Event<span class="brand-spark">Spark</span><span class="brand-dot"></span></span>
+      </a>
+
+      <div class="sidebar-nav">
+        <small>WORKSPACE</small>
+        <a href="dashboard.html">
+          <span>▦</span> Overview
+        </a>
+        <a href="events.html">
+          <span>▣</span> Your Events
+        </a>
+        <a href="create-event.html">
+          <span>＋</span> Create Event
+        </a>
+        <a href="attendees.html">
+          <span>👥</span> Attendees & Check-In
+        </a>
+        <a class="active" href="analytics.html">
+          <span>📊</span> Analytics
+        </a>
+
+        <small>ACCOUNT</small>
+        <a href="settings.html">
+          <span>⚙</span> Settings
+        </a>
+        <button id="logout" class="linkbtn">
+          <span>↪</span> Log out
+        </button>
+      </div>
+
+      <!-- User Profile Widget -->
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebar-avatar">—</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebar-name">Organizer</div>
+          <div class="user-email" id="sidebar-email">organizer@eventspark.io</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header>
+        <div>
+          <small>WORKSPACE INTELLIGENCE</small>
+          <h1>Analytics & Reports</h1>
+        </div>
+        <a class="btn ghost" href="events.html">View Events ↗</a>
+      </header>
+
+      <section class="content">
+        <!-- 4 Metric Cards -->
+        <div class="stats">
+          <article>
+            <div class="stat-icon pink">👥</div>
+            <span class="stat-label">Total Registrations</span>
+            <strong id="total">0</strong>
+            <div class="stat-sub">Across all hosted events</div>
+          </article>
+          <article>
+            <div class="stat-icon indigo">🎪</div>
+            <span class="stat-label">Published Events</span>
+            <strong id="published">0</strong>
+            <div class="stat-sub">Active public pages</div>
+          </article>
+          <article>
+            <div class="stat-icon emerald">✓</div>
+            <span class="stat-label">Attendance Rate</span>
+            <strong id="rate">0%</strong>
+            <div class="stat-sub">Checked-in conversion</div>
+          </article>
+          <article>
+            <div class="stat-icon amber">📈</div>
+            <span class="stat-label">Avg Registrations / Event</span>
+            <strong id="avg-regs">0</strong>
+            <div class="stat-sub">Attendee demand index</div>
+          </article>
+        </div>
+
+        <!-- 2 Visual Charts Grid -->
+        <div class="two" style="margin-bottom: 24px;">
+          <!-- Chart 1: Registrations by Event -->
+          <div class="panel" style="margin: 0;">
+            <div class="panel-header">
+              <div>
+                <h3>Registrations by Event</h3>
+                <p style="font-size: 13px; color: var(--muted); margin: 4px 0 0;">Attendee volume per published event.</p>
+              </div>
+            </div>
+            <div style="position: relative; min-height: 260px;">
+              <canvas id="chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 2: Attendance Status Breakdown -->
+          <div class="panel" style="margin: 0;">
+            <div class="panel-header">
+              <div>
+                <h3>Attendance Status Breakdown</h3>
+                <p style="font-size: 13px; color: var(--muted); margin: 4px 0 0;">Attended vs Registered vs Cancelled.</p>
+              </div>
+            </div>
+            <div style="position: relative; min-height: 260px; display: flex; align-items: center; justify-content: center;">
+              <canvas id="statusChart" style="max-height: 240px;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insights Summary Card -->
+        <div class="panel">
+          <h3 style="margin-bottom: 12px;">Performance Insights & Takeaways</h3>
+          <div class="three" style="margin-top: 16px;">
+            <div style="background: #f8fafc; border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px;">
+              <div style="font-weight: 700; color: var(--ink); margin-bottom: 6px;">Top Performing Event</div>
+              <div id="top-event" style="font-size: 15px; font-weight: 800; color: var(--primary);">Loading...</div>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px;">
+              <div style="font-weight: 700; color: var(--ink); margin-bottom: 6px;">Most Popular Category</div>
+              <div id="top-cat" style="font-size: 15px; font-weight: 800; color: var(--purple);">Technology</div>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px;">
+              <div style="font-weight: 700; color: var(--ink); margin-bottom: 6px;">Conversion Health</div>
+              <div id="health-status" style="font-size: 15px; font-weight: 800; color: var(--success);">Excellent (High Turnout)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/analytics.js?v=3"></script>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EventSpark — The Modern Event Experience Platform</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="landing">
+    <!-- Navigation -->
+    <header class="nav">
+      <a class="brand" href="index.html">
+        <span>Event<span class="brand-spark">Spark</span></span>
+      </a>
+      <nav>
+        <a href="#events">Explore</a>
+        <a href="#how">How it Works</a>
+        <a href="#features">Features</a>
+        <a href="dashboard.html">Workspace</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn ghost" href="login.html">Log in</a>
+        <a class="btn btn-gradient" href="signup.html">Get started free ↗</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-glow-blob blob-1"></div>
+
+        <!-- 3D Floating Posters -->
+        <div class="poster p1" onclick="location.href='public-event.html?id=demo-event-ai-summit'">
+          <div>
+            <small>TECH SUMMIT</small>
+            BUILD<br />WHAT'S<br /><b>NEXT.</b>
+          </div>
+          <div class="poster-tag">AI & CLOUD · 2026</div>
+        </div>
+
+        <div class="poster p2" onclick="location.href='public-event.html?id=demo-event-music-fest'">
+          <div>
+            <small>COLLEGE & MUSIC</small>
+            ELECTRIC<br /><b>VIBES.</b>
+          </div>
+          <div class="poster-tag">SUNSET PIER · LIVE</div>
+        </div>
+
+        <div class="poster p3" onclick="location.href='public-event.html?id=demo-event-ui-workshop'">
+          <div>
+            <small>DESIGN LAB</small>
+            PIXEL<br /><b>CRAFT.</b>
+          </div>
+          <div class="poster-tag">VIRTUAL STUDIO</div>
+        </div>
+
+        <div class="poster p4" onclick="location.href='public-event.html?id=demo-event-hackathon'">
+          <div>
+            <small>HACKATHON</small>
+            IDEAS<br />INTO<br /><b>ACTION.</b>
+          </div>
+          <div class="poster-tag">36H SPRINT · $10K</div>
+        </div>
+
+        <div class="hero-container">
+          <span class="eyebrow">✨ THE MODERN EVENT EXPERIENCE PLATFORM</span>
+          <h1>
+            The event platform<br />where ideas become<br />
+            <span class="gradient-text" id="rotating">experiences.</span>
+          </h1>
+          <p>
+            Create breathtaking event pages, collect seamless attendee registrations, 
+            and bring your community together in minutes. No design or coding skills required.
+          </p>
+
+          <div class="hero-cta-group">
+            <a class="btn btn-gradient big" href="signup.html">Create your event free ↗</a>
+            <a class="btn ghost big" href="#events">Explore live events ↓</a>
+          </div>
+
+          <div class="social-proof">
+            <div class="avatar-stack">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Organizer" />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="Organizer" />
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" alt="Organizer" />
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80" alt="Organizer" />
+            </div>
+            <span>
+              <span class="rating-stars">★★★★★</span>
+              <b>4.9/5</b> · Trusted by <b>1,200+</b> organizers worldwide
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Events Section -->
+      <section class="section" id="events">
+        <div class="section-header">
+          <span class="eyebrow">CURATED EXPERIENCES</span>
+          <h2>Find your next <em>experience.</em></h2>
+          <p>Discover hand-picked tech summits, creative design labs, college fests, and indie festivals.</p>
+        </div>
+
+        <div id="featured" class="cards">
+          <!-- Dynamic event cards injected by landing.js -->
+        </div>
+      </section>
+
+      <!-- How it Works Section -->
+      <section class="section tint" id="how">
+        <div class="section-header">
+          <span class="eyebrow">SIMPLE 3-STEP WORKFLOW</span>
+          <h2>From idea to <em>it's happening.</em></h2>
+          <p>Everything you need to launch and manage events without the usual headaches.</p>
+        </div>
+
+        <div class="three">
+          <article class="step-card">
+            <div class="step-num">01</div>
+            <h3>Design your event page</h3>
+            <p>Pick a high-impact cover, set your schedule, add venue or online link, and customize registration limits.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-num">02</div>
+            <h3>Share your smart link</h3>
+            <p>Let attendees register with zero friction on any device. Instant calendar sync and digital ticket pass generated.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-num">03</div>
+            <h3>Check in & celebrate</h3>
+            <p>Manage real-time guest lists, one-click attendee check-in, export CSV reports, and track registration analytics.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Bento Features Section -->
+      <section class="section" id="features">
+        <div class="section-header">
+          <span class="eyebrow">BUILT FOR CREATORS & ORGANIZERS</span>
+          <h2>Less admin. <em>More moments.</em></h2>
+          <p>Powerful tools packaged in an intuitive, delightfully responsive interface.</p>
+        </div>
+
+        <div class="features-bento">
+          <div class="bento-card span-2">
+            <div class="bento-icon">🎨</div>
+            <h3>High-Converting Public Event Pages</h3>
+            <p>Every event gets a dedicated, modern landing page with rich cover imagery, interactive maps, date badges, and responsive ticket passes built to convert visitors into attendees.</p>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-icon">⚡</div>
+            <h3>1-Click Guest Registration</h3>
+            <p>No mandatory passwords or clunky 10-step forms. Attendees register in seconds and receive an instant digital ticket pass with registration code.</p>
+          </div>
+
+          <div class="bento-card">
+            <div class="bento-icon">📊</div>
+            <h3>Real-Time Analytics & Growth</h3>
+            <p>Monitor registrations as they happen, analyze attendance rates, and visualize demand trends across all your events with interactive visual charts.</p>
+          </div>
+
+          <div class="bento-card span-2">
+            <div class="bento-icon">🎟️</div>
+            <h3>Live Door Check-in & Instant CSV Export</h3>
+            <p>Easily search guests by name or email at the door, mark attendance with a single click, and download clean CSV guest rosters anytime you need.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Banner -->
+      <section class="cta-banner">
+        <h2>Your next unforgettable event<br />starts with EventSpark.</h2>
+        <p>Join thousands of organizers crafting memorable experiences today. Completely free to start.</p>
+        <a class="btn light big" href="signup.html">Create your first event free ↗</a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="EventSpark" class="brand-logo-img" />
+        <span>Event<span class="brand-spark">Spark</span></span>
+      </a>
+      <div class="footer-links">
+        <a href="#events">Explore</a>
+        <a href="#how">How it Works</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="login.html">Sign In</a>
+      </div>
+      <div>© 2026 EventSpark. Make every event matter.</div>
+    </footer>
+
+    <!-- Scripts -->
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/landing.js?v=3"></script>
+  </body>
+</html>

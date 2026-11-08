@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Event Registration — EventSpark</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Top Header Navigation -->
+    <header class="nav">
+      <a class="brand" href="index.html">
+        <span>Event<span class="brand-spark">Spark</span></span>
+      </a>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <button id="btn-share-page" class="btn ghost sm">🔗 Share Event</button>
+        <a class="btn ghost sm" href="index.html">← Explore All Events</a>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="public-container" id="public">
+      <div style="text-align: center; padding: 60px 20px;">
+        <p style="color: var(--muted); font-size: 16px;">Loading event details...</p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <a class="brand" href="index.html">
+        
+        <span>Event<span class="brand-spark">Spark</span></span>
+      </a>
+      <div>Powered by EventSpark — The modern event experience platform.</div>
+      <div>© 2026 EventSpark</div>
+    </footer>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/public-event.js?v=3"></script>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Create Event — EventSpark Workspace</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        
+        <span>Event<span class="brand-spark">Spark</span></span>
+      </a>
+
+      <div class="sidebar-nav">
+        <small>WORKSPACE</small>
+        <a href="dashboard.html">
+          <span>▦</span> Overview
+        </a>
+        <a href="events.html">
+          <span>▣</span> Your Events
+        </a>
+        <a class="active" href="create-event.html">
+          <span>＋</span> Create Event
+        </a>
+        <a href="attendees.html">
+          <span>👥</span> Attendees & Check-In
+        </a>
+        <a href="analytics.html">
+          <span>📊</span> Analytics
+        </a>
+
+        <small>ACCOUNT</small>
+        <a href="settings.html">
+          <span>⚙</span> Settings
+        </a>
+        <button id="logout" class="linkbtn">
+          <span>↪</span> Log out
+        </button>
+      </div>
+
+      <!-- User Profile Widget -->
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebar-avatar">—</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebar-name">Organizer</div>
+          <div class="user-email" id="sidebar-email">organizer@eventspark.io</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header>
+        <div>
+          <small>WORKSPACE MANAGEMENT</small>
+          <h1 id="page-title">Create an Event</h1>
+        </div>
+        <a class="btn ghost" href="events.html">← Back to Events</a>
+      </header>
+
+      <section class="content">
+        <div class="create-event-layout">
+          <!-- Form Panel -->
+          <form id="event-form" class="panel" style="margin: 0;">
+            <input type="hidden" name="id" />
+
+            <div style="border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 20px;">
+              <h3 style="margin-bottom: 4px;">Event Details</h3>
+              <p style="font-size: 13px; color: var(--muted); margin: 0;">Enter information to display on your public event page.</p>
+            </div>
+
+            <label>
+              Event Title *
+              <input name="title" id="input-title" placeholder="e.g. NextGen Web & AI Summit 2026" required />
+            </label>
+
+            <div class="two">
+              <label>
+                Category
+                <select name="category" id="input-category">
+                  <option value="Technology">Technology</option>
+                  <option value="Workshop">Workshop</option>
+                  <option value="Conference">Conference</option>
+                  <option value="College fest">College fest</option>
+                  <option value="Music">Music</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label>
+                Format / Mode
+                <select name="event_mode" id="input-mode">
+                  <option value="offline">In-person (Physical venue)</option>
+                  <option value="online">Online (Virtual stream / Zoom)</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Description *
+              <textarea name="description" id="input-desc" rows="4" placeholder="Tell attendees what to expect, who is speaking, agenda highlights, and why they should join..." required></textarea>
+            </label>
+
+            <!-- Curated Cover Presets -->
+            <label style="margin-top: 24px;">
+              Cover Image URL
+              <input name="cover_image" id="input-cover" type="url" placeholder="https://images.unsplash.com/..." />
+            </label>
+            <div style="font-size: 12px; color: var(--muted); margin-top: -2px; margin-bottom: 8px;">
+              Or pick one of our hand-crafted preset banners:
+            </div>
+
+            <div class="cover-presets" id="cover-presets">
+              <div class="cover-preset-btn active" data-url="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=200&q=80');">
+                <div class="cover-preset-label">Tech Summit</div>
+              </div>
+              <div class="cover-preset-btn" data-url="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=200&q=80');">
+                <div class="cover-preset-label">Music Fest</div>
+              </div>
+              <div class="cover-preset-btn" data-url="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80" style="background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=200&q=80');">
+                <div class="cover-preset-label">Design Lab</div>
+              </div>
+              <div class="cover-preset-btn" data-url="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=200&q=80');">
+                <div class="cover-preset-label">Hackathon</div>
+              </div>
+            </div>
+
+            <!-- Date & Time Grid -->
+            <div style="border-top: 1px solid var(--line); margin-top: 24px; padding-top: 20px;">
+              <h3 style="margin-bottom: 4px;">Date, Time & Venue</h3>
+            </div>
+
+            <div class="two">
+              <label>
+                Start Date *
+                <input name="start_date" id="input-start-date" type="date" required />
+              </label>
+              <label>
+                End Date
+                <input name="end_date" id="input-end-date" type="date" />
+              </label>
+              <label>
+                Start Time
+                <input name="start_time" id="input-start-time" type="time" />
+              </label>
+              <label>
+                End Time
+                <input name="end_time" id="input-end-time" type="time" />
+              </label>
+            </div>
+
+            <label>
+              Location / Venue (or Zoom Link)
+              <input name="location" id="input-location" placeholder="e.g. Grand Auditorium, San Francisco or Virtual Stream URL" />
+            </label>
+
+            <!-- Registration Capacity & Deadline -->
+            <div class="two">
+              <label>
+                Maximum Attendees
+                <input name="max_attendees" type="number" min="1" placeholder="Unlimited if left empty" />
+              </label>
+              <label>
+                Registration Deadline
+                <input name="registration_deadline" type="date" />
+              </label>
+            </div>
+
+            <label class="check">
+              <input name="registration_enabled" type="checkbox" checked />
+              <span>Enable public attendee registration</span>
+            </label>
+
+            <div style="display: flex; gap: 14px; margin-top: 28px;">
+              <button type="button" id="draft" class="btn ghost">Save Draft</button>
+              <button type="submit" class="btn btn-gradient">Publish Event ↗</button>
+            </div>
+
+            <p id="message" class="message" style="display: none;"></p>
+          </form>
+
+          <!-- Live Preview Side Panel -->
+          <div class="preview-sticky">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="eyebrow" style="margin: 0;">LIVE CARD PREVIEW</span>
+              <span style="font-size: 11px; color: var(--muted);">Auto-updates as you type</span>
+            </div>
+
+            <!-- Preview Card -->
+            <div class="eventcard" style="box-shadow: var(--shadow-lg);">
+              <div class="card-cover-wrap">
+                <img id="prev-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80" alt="Preview Cover" />
+                <div class="card-badges">
+                  <div class="card-date-badge">
+                    <span class="day" id="prev-day">20</span>
+                    <span class="month" id="prev-month">NOV</span>
+                  </div>
+                  <span class="pill-badge category-tech" id="prev-cat">TECHNOLOGY</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span id="prev-loc">📍 San Francisco</span>
+                  <span id="prev-time">· 09:30 AM</span>
+                </div>
+                <h3 id="prev-title">NextGen Web & AI Summit 2026</h3>
+                <p id="prev-desc">Join tech visionaries, engineers, and startup founders for high-impact keynotes and demo labs...</p>
+                <div class="card-footer">
+                  <div class="card-attendees-info">
+                    <span>👥 <b>0</b> registered</span>
+                  </div>
+                  <span class="btn btn-primary sm">Get Tickets ↗</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 16px; padding: 16px; background: white; border: 1px solid var(--line); border-radius: var(--radius-lg); font-size: 13px; color: var(--muted);">
+              💡 <b>Tip:</b> High quality 1200x600px cover images attract 3x more registrations!
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/create-event.js?v=3"></script>
+  </body>
+</html>

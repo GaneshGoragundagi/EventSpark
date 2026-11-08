@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sign Up — EventSpark</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth">
+    <a class="brand authbrand" href="index.html">
+    
+      <span>Event<span class="brand-spark">Spark</span></span>
+    </a>
+
+    <main class="authcard">
+      <span class="eyebrow">GET STARTED FREE</span>
+      <h1>Create your space.</h1>
+      <p>One unified organizer workspace to host and grow all your events.</p>
+
+      <div class="tabs">
+        <a href="login.html">Log in</a>
+        <a class="active" href="signup.html">Sign up</a>
+      </div>
+
+      <form id="signup" action="javascript:void(0);">
+        <label>
+          Full name
+          <input name="name" id="signup-name" placeholder="Your Full Name (e.g. John Doe)" required />
+        </label>
+
+        <label>
+          Work / Personal email
+          <input name="email" id="signup-email" type="email" placeholder="you@company.com" required />
+        </label>
+
+        <label>
+          Password
+          <input name="password" id="signup-password" type="password" minlength="6" placeholder="At least 6 characters" required />
+        </label>
+
+        <label>
+          Confirm password
+          <input name="confirm" id="signup-confirm" type="password" minlength="6" placeholder="Repeat password" required />
+        </label>
+
+        <button type="submit" class="btn btn-gradient full big" id="signup-submit-btn" style="margin-top: 14px;">
+          Create Free Space ↗
+        </button>
+
+        <p id="message" class="message" style="display: none;"></p>
+      </form>
+
+      <div style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--muted);">
+        Already have an account? <a href="login.html" style="color: var(--primary); font-weight: 700;">Log in here</a>
+      </div>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/auth.js?v=3"></script>
+  </body>
+</html>

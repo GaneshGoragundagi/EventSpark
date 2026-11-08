@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Settings — EventSpark Workspace</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="EventSpark" class="brand-logo-img" />
+        <span>Event<span class="brand-spark">Spark</span><span class="brand-dot"></span></span>
+      </a>
+
+      <div class="sidebar-nav">
+        <small>WORKSPACE</small>
+        <a href="dashboard.html">
+          <span>▦</span> Overview
+        </a>
+        <a href="events.html">
+          <span>▣</span> Your Events
+        </a>
+        <a href="create-event.html">
+          <span>＋</span> Create Event
+        </a>
+        <a href="attendees.html">
+          <span>👥</span> Attendees & Check-In
+        </a>
+        <a href="analytics.html">
+          <span>📊</span> Analytics
+        </a>
+
+        <small>ACCOUNT</small>
+        <a class="active" href="settings.html">
+          <span>⚙</span> Settings
+        </a>
+        <button id="logout" class="linkbtn">
+          <span>↪</span> Log out
+        </button>
+      </div>
+
+      <!-- User Profile Widget -->
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebar-avatar">—</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebar-name">Organizer</div>
+          <div class="user-email" id="sidebar-email">organizer@eventspark.io</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header>
+        <div>
+          <small>WORKSPACE CONFIGURATION</small>
+          <h1>Settings</h1>
+        </div>
+        <a class="btn ghost" href="dashboard.html">Back to Dashboard</a>
+      </header>
+
+      <section class="content">
+        <div style="max-width: 760px; display: flex; flex-direction: column; gap: 24px;">
+
+          <!-- Supabase Cloud Connection Status Card -->
+          <div class="panel" style="background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 1.5px solid #a7f3d0;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
+              <div>
+                <span class="pill-badge status-attended" id="cloud-badge" style="margin-bottom: 8px;">
+                  🟢 SUPABASE CLOUD ACTIVE
+                </span>
+                <h3 style="margin: 4px 0 2px; color: #065f46;">Supabase Backend Storage</h3>
+                <p style="font-size: 13px; color: #047857; margin: 0;">
+                  Settings, profile, events, and registrations are stored directly in your Supabase PostgreSQL cloud database.
+                </p>
+              </div>
+              <div style="text-align: right; font-size: 12px; color: #065f46; font-weight: 600;">
+                <div>Project: <code style="font-size: 11px; background: rgba(255,255,255,0.7); padding: 2px 6px; border-radius: 4px;">htlrguaivqqzhocrusak</code></div>
+                <div id="cloud-uid" style="margin-top: 4px; font-size: 11px; opacity: 0.85;">User ID: Authenticated</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Organizer Profile Panel (Supabase Stored) -->
+          <div class="panel">
+            <h3 style="margin-bottom: 4px;">Organizer Profile</h3>
+            <p style="font-size: 13px; color: var(--muted); margin: 0 0 20px;">
+              Saved in Supabase <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 4px;">public.profiles</code> and Supabase Auth.
+            </p>
+
+            <form id="settings">
+              <div class="two">
+                <label>
+                  Full Name *
+                  <input name="name" id="set-name" required />
+                </label>
+
+                <label>
+                  Email Address
+                  <input name="email" id="set-email" disabled style="background: #f8fafc; color: var(--muted);" />
+                </label>
+              </div>
+
+              <div class="two">
+                <label>
+                  Organization / Brand Name
+                  <input name="organization" id="set-org" placeholder="e.g. EventSpark Labs" />
+                </label>
+
+                <label>
+                  Contact Phone
+                  <input name="phone" id="set-phone" placeholder="+1 (555) 000-0000" />
+                </label>
+              </div>
+
+              <label>
+                Organizer Bio / Tagline
+                <textarea name="bio" id="set-bio" rows="3" placeholder="Brief description displayed on your public events..."></textarea>
+              </label>
+
+              <!-- Workspace Defaults -->
+              <div style="border-top: 1px solid var(--line); margin: 24px 0 16px; padding-top: 16px;">
+                <h4 style="margin: 0 0 4px; font-size: 15px;">Event Defaults & Preferences</h4>
+                <p style="font-size: 12.5px; color: var(--muted); margin: 0 0 16px;">Default settings applied when creating new events.</p>
+              </div>
+
+              <div class="two">
+                <label>
+                  Default Category
+                  <select name="default_category" id="set-cat">
+                    <option value="Technology">Technology</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Conference">Conference</option>
+                    <option value="College fest">College fest</option>
+                    <option value="Music">Music</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+
+                <label>
+                  Default Format
+                  <select name="default_mode" id="set-mode">
+                    <option value="offline">In-person</option>
+                    <option value="online">Online / Virtual</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="check">
+                <input name="email_notifications" id="set-notif" type="checkbox" checked />
+                <span>Receive email notifications when new attendees register</span>
+              </label>
+
+              <label class="check">
+                <input name="public_profile" id="set-public" type="checkbox" checked />
+                <span>Show organizer bio & organization badge on public event pages</span>
+              </label>
+
+              <div style="margin-top: 20px;">
+                <button type="submit" class="btn btn-gradient">
+                  Save Settings to Supabase ☁
+                </button>
+              </div>
+              <p id="message" class="message" style="display: none;"></p>
+            </form>
+          </div>
+
+          <!-- Supabase Cloud Sync & Migration Panel -->
+          <div class="panel">
+            <h3 style="margin-bottom: 4px;">Supabase Cloud Data Tools</h3>
+            <p style="font-size: 13px; color: var(--muted); margin: 0 0 16px;">
+              Manage and synchronize records between browser storage and your Supabase cloud tables.
+            </p>
+
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <button type="button" id="btn-sync-supabase" class="btn btn-primary sm">
+                🚀 Push Local Events to Supabase
+              </button>
+              <button type="button" id="btn-seed-cloud" class="btn ghost sm">
+                ✨ Seed Sample Events to Supabase
+              </button>
+              <button type="button" id="btn-clear-local" class="btn btn-danger-ghost sm">
+                🗑️ Clear Local Storage Cache
+              </button>
+            </div>
+          </div>
+
+          <!-- Security / Password Panel (Supabase Auth) -->
+          <div class="panel">
+            <h3 style="margin-bottom: 4px;">Account Security</h3>
+            <p style="font-size: 13px; color: var(--muted); margin: 0 0 16px;">
+              Update your Supabase Auth account password.
+            </p>
+
+            <form id="password-form" style="max-width: 440px;">
+              <label>
+                New Password
+                <input name="new_password" type="password" minlength="6" placeholder="At least 6 characters" required />
+              </label>
+              <label>
+                Confirm New Password
+                <input name="confirm_password" type="password" minlength="6" placeholder="Repeat new password" required />
+              </label>
+              <button type="submit" class="btn ghost sm" style="margin-top: 10px;">
+                Update Password
+              </button>
+              <p id="pass-message" class="message" style="display: none;"></p>
+            </form>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/settings.js?v=3"></script>
+  </body>
+</html>

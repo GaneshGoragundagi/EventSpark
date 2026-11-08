@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Overview — EventSpark Workspace</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        
+        <span>Event<span class="brand-spark">Spark</span>
+      </a>
+
+      <div class="sidebar-nav">
+        <small>WORKSPACE</small>
+        <a class="active" href="dashboard.html">
+          <span>▦</span> Overview
+        </a>
+        <a href="events.html">
+          <span>▣</span> Your Events
+        </a>
+        <a href="create-event.html">
+          <span>＋</span> Create Event
+        </a>
+        <a href="attendees.html">
+          <span>👥</span> Attendees & Check-In
+        </a>
+        <a href="analytics.html">
+          <span>📊</span> Analytics
+        </a>
+
+        <small>ACCOUNT</small>
+        <a href="settings.html">
+          <span>⚙</span> Settings
+        </a>
+        <button id="logout" class="linkbtn">
+          <span>↪</span> Log out
+        </button>
+      </div>
+
+      <!-- User Profile Widget -->
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebar-avatar">—</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebar-name">Organizer</div>
+          <div class="user-email" id="sidebar-email">organizer@eventspark.io</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header>
+        <div>
+          <small>ORGANIZER DASHBOARD</small>
+          <h1>Overview</h1>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <a class="btn ghost" href="index.html" target="_blank">View Live Site ↗</a>
+          <a class="btn btn-gradient" href="create-event.html">＋ Create Event</a>
+        </div>
+      </header>
+
+      <section class="content">
+        <div style="margin-bottom: 24px;">
+          <h2 id="welcome" style="margin-bottom: 6px;">Welcome back 👋</h2>
+          <p style="margin: 0; color: var(--muted); font-size: 14.5px;">Here is the latest snapshot of your active events, attendees, and registrations.</p>
+        </div>
+
+        <!-- 4 Stats Cards -->
+        <div class="stats">
+          <article>
+            <div class="stat-icon indigo">🎪</div>
+            <span class="stat-label">Total Events</span>
+            <strong id="events-count">0</strong>
+            <div class="stat-sub">Active & drafts</div>
+          </article>
+
+          <article>
+            <div class="stat-icon pink">👥</div>
+            <span class="stat-label">Total Registrations</span>
+            <strong id="regs-count">0</strong>
+            <div class="stat-sub">↑ +24% growth</div>
+          </article>
+
+          <article>
+            <div class="stat-icon amber">🗓️</div>
+            <span class="stat-label">Upcoming Events</span>
+            <strong id="upcoming-count">0</strong>
+            <div class="stat-sub">Happening soon</div>
+          </article>
+
+          <article>
+            <div class="stat-icon emerald">✓</div>
+            <span class="stat-label">Checked-In Attendees</span>
+            <strong id="attended-count">0</strong>
+            <div class="stat-sub" id="attended-rate">Live rate: 0%</div>
+          </article>
+        </div>
+
+        <!-- Quick Actions Banner -->
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px;">
+          <a href="create-event.html" class="btn ghost sm">✨ New Event Page</a>
+          <a href="events.html" class="btn ghost sm">📋 Browse All Events</a>
+          <a href="attendees.html" class="btn ghost sm">🎟️ Door Check-In</a>
+          <a href="analytics.html" class="btn ghost sm">📈 View Reports</a>
+        </div>
+
+        <!-- Recent Registrations Panel -->
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Recent Registrations</h3>
+              <p style="font-size: 13px; color: var(--muted); margin: 4px 0 0;">Latest attendees signed up for your events.</p>
+            </div>
+            <a class="btn ghost sm" href="attendees.html">View all attendees ↗</a>
+          </div>
+
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Attendee</th>
+                  <th>Event</th>
+                  <th>Ticket Code</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recent">
+                <tr>
+                  <td colspan="5" style="text-align: center; padding: 24px; color: var(--muted);">Loading registrations...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/dashboard.js?v=3"></script>
+  </body>
+</html>

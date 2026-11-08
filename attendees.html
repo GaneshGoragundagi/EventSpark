@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Attendees & Check-In — EventSpark Workspace</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        
+        <span>Event<span class="brand-spark">Spark</span></span>
+      </a>
+
+      <div class="sidebar-nav">
+        <small>WORKSPACE</small>
+        <a href="dashboard.html">
+          <span>▦</span> Overview
+        </a>
+        <a href="events.html">
+          <span>▣</span> Your Events
+        </a>
+        <a href="create-event.html">
+          <span>＋</span> Create Event
+        </a>
+        <a class="active" href="attendees.html">
+          <span>👥</span> Attendees & Check-In
+        </a>
+        <a href="analytics.html">
+          <span>📊</span> Analytics
+        </a>
+
+        <small>ACCOUNT</small>
+        <a href="settings.html">
+          <span>⚙</span> Settings
+        </a>
+        <button id="logout" class="linkbtn">
+          <span>↪</span> Log out
+        </button>
+      </div>
+
+      <!-- User Profile Widget -->
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebar-avatar">—</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebar-name">Organizer</div>
+          <div class="user-email" id="sidebar-email">organizer@eventspark.io</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header>
+        <div>
+          <small>WORKSPACE MANAGEMENT</small>
+          <h1>Attendees & Check-In</h1>
+        </div>
+        <button id="export" class="btn ghost">↓ Export Attendees CSV</button>
+      </header>
+
+      <section class="content">
+        <!-- Quick Stats Banner -->
+        <div class="stats" style="grid-template-columns: repeat(3, 1fr); margin-top: 0;">
+          <article>
+            <div class="stat-icon pink">👥</div>
+            <span class="stat-label">Total Registrations</span>
+            <strong id="stat-total">0</strong>
+            <div class="stat-sub">Across all events</div>
+          </article>
+          <article>
+            <div class="stat-icon emerald">✓</div>
+            <span class="stat-label">Checked-In Attendees</span>
+            <strong id="stat-attended">0</strong>
+            <div class="stat-sub" id="stat-rate">0% of total</div>
+          </article>
+          <article>
+            <div class="stat-icon amber">⏳</div>
+            <span class="stat-label">Pending Check-Ins</span>
+            <strong id="stat-pending">0</strong>
+            <div class="stat-sub">Registered awaiting check-in</div>
+          </article>
+        </div>
+
+        <!-- Filter Toolbar -->
+        <div class="toolbar">
+          <input id="search" placeholder="🔍 Search by attendee name, email, or ticket code..." />
+          <select id="event-filter">
+            <option value="all">All Events</option>
+          </select>
+          <select id="status-filter">
+            <option value="all">All Statuses</option>
+            <option value="registered">Registered</option>
+            <option value="attended">Attended</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+
+        <!-- Table Panel -->
+        <div class="panel" style="padding: 0; overflow: hidden;">
+          <div class="tablewrap" style="border: 0; border-radius: 0;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Attendee Name & Email</th>
+                  <th>Event</th>
+                  <th>Ticket Code</th>
+                  <th>Phone</th>
+                  <th>Status</th>
+                  <th>Door Check-In</th>
+                </tr>
+              </thead>
+              <tbody id="rows">
+                <tr>
+                  <td colspan="6" style="text-align: center; padding: 30px; color: var(--muted);">Loading attendees...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js?v=3"></script>
+    <script src="js/core.js?v=3"></script>
+    <script src="js/attendees.js?v=3"></script>
+  </body>
+</html>
